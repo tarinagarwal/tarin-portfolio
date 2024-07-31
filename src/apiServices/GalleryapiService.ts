@@ -1,5 +1,5 @@
 // api.ts
-const API_BASE_URL = "http://127.0.0.1:5050/api/v1";
+const API_BASE_URL = "https://portfolio-backend-kukl.onrender.com/api/v1";
 
 export interface GalleryItem {
   id?: number;

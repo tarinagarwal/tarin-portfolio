@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:5050/api/v1/blogs';
+const API_URL = 'https://portfolio-backend-kukl.onrender.com/api/v1/blogs';
 
 interface Blog {
   id: number;
