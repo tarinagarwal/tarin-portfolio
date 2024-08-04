@@ -3,27 +3,57 @@ import { useParams } from "react-router-dom";
 import { getBlogs } from "../../apiServices/blogsApiService";
 import { Separator } from "@/components/ui/separator"; // Update path as needed
 import { Blog } from "../Blogs/Blogs";
+import { PacmanLoader } from "react-spinners"; // Import PacmanLoader for loading state
 
 const PostPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [post, setPost] = useState<Blog>();
+  const [post, setPost] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const blogs = await getBlogs();
         const foundPost = blogs.find((p) => p.id === Number(id));
-        setPost(foundPost);
+        if (foundPost) {
+          setPost(foundPost);
+        } else {
+          setError("Post not found.");
+        }
       } catch (error) {
+        setError("Error fetching post.");
         console.error("Error fetching post:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPost();
   }, [id]);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-[#22242f]">
+        <PacmanLoader color="#c497fe" size={50} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-[#22242f] text-white">
+        <p>{error}</p>
+      </div>
+    );
+  }
+
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-[#22242f] text-white">
+        <p>Post not found</p>
+      </div>
+    );
   }
 
   return (
@@ -51,16 +81,15 @@ const PostPage: React.FC = () => {
             </div>
           </header>
           <article
-            className="mt-8 text-white {styles.prose}"
+            className="mt-8 text-white"
             dangerouslySetInnerHTML={{ __html: post.body }}
           ></article>
         </main>
         <aside className="space-y-6">
           <div className="space-y-2">
             <div className="grid gap-2">
-              {/* You might want to list related posts or similar content here */}
-              {/* Example: */}
-              {post && (
+              {/* Display the post's image */}
+              {post.img && (
                 <img
                   src={post.img}
                   className="flex items-center gap-2 text-sm hover:underline"

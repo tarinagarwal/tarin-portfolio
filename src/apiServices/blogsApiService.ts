@@ -32,4 +32,24 @@ const addBlog = async (blog: Omit<Blog, 'id'>) => {
   }
 };
 
-export { getBlogs, addBlog };
+const deleteBlog = async (id: number) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting blog:', error);
+    throw error;
+  }
+};
+
+const updateBlog = async (id: number, blog: Omit<Blog, 'id'>) => {
+  try {
+    const response = await axios.put(`${API_URL}/${id}`, blog);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating blog:', error);
+    throw error;
+  }
+};
+
+export { getBlogs, addBlog, deleteBlog, updateBlog };

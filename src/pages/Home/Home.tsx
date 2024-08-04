@@ -150,6 +150,7 @@ const Home: React.FC = () => {
                     </p>
                     <Link
                       to="https://tarinagarwal.itch.io/paint-the-walls-red"
+                      target="_blank"
                       className="inline-flex h-8 items-center justify-center rounded-md duration-200 hover:scale-105 bg-[#c497fe] px-4 text-sm font-medium text-black shadow transition-colors hover:bg-[#c4f582] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
                       View Project
@@ -158,17 +159,18 @@ const Home: React.FC = () => {
                 </Card>
                 <Card className="bg-black border-b border-[#c497fe]">
                   <img
-                    src=""
+                    src="https://img.itch.zone/aW1hZ2UvMjE4Mzg4NS8xMjk0MDcwMi5wbmc=/347x500/rwaLy8.png"
                     alt="Project 1"
                     className="rounded-t-xl hover:scale-105 duration-200 w-[340px] h-[200px]"
                   />
                   <CardContent className="space-y-2 p-4 text-white">
-                    <h3 className="text-lg font-bold">Teacher's Choice</h3>
+                    <h3 className="text-lg font-bold">The Pursuit Within</h3>
                     <p className="text-muted-foreground">
-                      An amazing website created for Teachers and Students.
+                    A horror game made with Unity Engine. <b>The Shaitaan awaits your presence!</b>
                     </p>
                     <Link
-                      to=""
+                      to="https://itch.io/profile/samay-entertainment"
+                      target="_blank"
                       className="inline-flex duration-200 hover:scale-105 h-8 items-center justify-center rounded-md bg-[#c497fe] px-4 text-sm font-medium text-black shadow transition-colors hover:bg-[#c4f582] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
                       View Project
@@ -188,6 +190,7 @@ const Home: React.FC = () => {
                     </p>
                     <Link
                       to="https://samay-entertainment.itch.io/de-bug"
+                      target="_blank"
                       className="inline-flex duration-200 hover:scale-105 h-8 items-center justify-center rounded-md bg-[#c497fe] px-4 text-sm font-medium text-black shadow transition-colors hover:bg-[#c4f582] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
                       View Project
