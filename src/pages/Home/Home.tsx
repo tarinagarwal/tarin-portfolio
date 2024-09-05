@@ -31,7 +31,7 @@ const Home: React.FC = () => {
   };
 
   const sendTelegramMessage = async (message: string) => {
-    const url = `http://127.0.0.1:5050/api/v1/telegram/send`;
+    const url = `https://portfolio-backend-kukl.onrender.com/api/v1/telegram/send`;
 
     try {
       const response = await fetch(url, {
