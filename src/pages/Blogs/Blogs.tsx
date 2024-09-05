@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getBlogs } from "../../apiServices/blogsApiService";
-import { SearchIcon } from "lucide-react";
+import { Search, Calendar, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export interface Blog {
   id: number;
@@ -15,7 +18,7 @@ export interface Blog {
   body: string;
 }
 
-const Blogs: React.FC = () => {
+export default function EnhancedBlogs() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState(true);
@@ -40,69 +43,105 @@ const Blogs: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-dvh bg-[#22242f]">
-      <header className="px-4 py-6 md:px-6 md:py-8">
-        <div className="container mx-auto flex items-center justify-between">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-[#c497fe]">
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="flex w-full pt-20 flex-col min-h-screen justify-center bg-[#0a0b1e] text-white overflow-hidden"
+      >
+        <div className="fixed inset-0 z-0"></div>
+        <div className="container mx-auto px-4 py-8 relative z-10">
+          <motion.h1
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+          >
             My Blogs
-          </h1>
-          <div className="relative w-full sm-search2:w-[150px] sm-search:w-[200px] max-w-md">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <SearchIcon className="w-5 h-5 text-muted-foreground" />
-            </div>
-            <Input
-              type="search"
-              placeholder="Search blog posts..."
-              className="block w-full p-2 pl-10 text-sm border-transparent rounded-md focus:border-primary focus:ring-primary"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        </div>
-      </header>
-
-      {loading ? (
-        <div className="flex justify-center items-center h-full py-12">
-          <PacmanLoader color="#c497fe" size={50} />
-        </div>
-      ) : (
-        <main className="container mx-auto grid grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 lg:grid-cols-3 md:px-6 md:py-12">
-          {filteredBlogs.map((post) => (
-            <div
-              key={post.id}
-              className="relative overflow-hidden rounded-lg group shadow-md hover:scale-105 duration-500 py-2 shadow-[#c497fe] hover:shadow-[#c4f582]"
-            >
-              <Link to={`/post/${post.id}`} className="absolute inset-0 z-10">
-                <span className="sr-only">View post</span>
-              </Link>
-              <img
-                src={post.img}
-                alt="Blog post image"
-                width={400}
-                height={225}
-                className="w-full h-48 object-cover transition-opacity group-hover:opacity-80"
-              />
-              <div className="p-4">
-                <h2 className="text-lg text-[#c497fe] font-semibold tracking-tight line-clamp-2">
-                  {post.title}
-                </h2>
-                <div className="flex items-center mt-2 text-sm text-muted-foreground">
-                  <div className="ml-3 text-[#c4f582]">
-                    <span>{post.author}</span>
-                    <span className="mx-1">·</span>
-                    <span>{post.date}</span>
-                  </div>
+          </motion.h1>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Card className="bg-transparent border-gray-700 overflow-hidden shadow-xl">
+              <CardContent className="p-6 space-y-8">
+                <div className="relative">
+                  <Input
+                    type="search"
+                    placeholder="Search blog posts..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-800 text-white border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  />
+                  <Search
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    size={20}
+                  />
                 </div>
-                <p className="mt-2 text-sm text-white line-clamp-3">
-                  {post.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </main>
-      )}
-    </div>
+                {loading ? (
+                  <div className="flex justify-center items-center py-12">
+                    <PacmanLoader color="#8b5cf6" size={50} />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredBlogs.map((post, index) => (
+                      <motion.div
+                        key={post.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <Card className="bg-gray-900 border-gray-700 overflow-hidden shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300">
+                          <Link to={`/post/${post.id}`} className="block">
+                            <div className="relative aspect-video overflow-hidden">
+                              <img
+                                src={post.img}
+                                alt={`Blog post image for ${post.title}`}
+                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                            </div>
+                          </Link>
+                          <CardContent className="p-4">
+                            <h2 className="text-xl font-semibold mb-2 text-purple-300 line-clamp-2 hover:text-purple-400 transition-colors duration-200">
+                              <Link to={`/post/${post.id}`}>{post.title}</Link>
+                            </h2>
+                            <Separator className="my-2 bg-gray-700" />
+                            <p className="text-sm text-gray-300 mb-3 line-clamp-3">
+                              {post.description}
+                            </p>
+                            <div className="flex items-center justify-between text-xs text-gray-400">
+                              <div className="flex items-center space-x-2">
+                                <User size={14} />
+                                <span>{post.author}</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <Calendar size={14} />
+                                <span>{post.date}</span>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+                {filteredBlogs.length === 0 && !loading && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center text-gray-400 mt-8"
+                  >
+                    No results found for "{search}"
+                  </motion.p>
+                )}
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
-};
-
-export default Blogs;
+}

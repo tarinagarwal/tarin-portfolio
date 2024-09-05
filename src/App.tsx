@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home/Home";
@@ -13,8 +13,8 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about-me" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -29,5 +29,3 @@ function App() {
 }
 
 export default App;
-
-

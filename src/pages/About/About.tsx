@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,32 +9,31 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { toast, ToastContainer } from "react-toastify";
-import { PacmanLoader } from "react-spinners"; // Import PacmanLoader for loading state
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  User,
+  Mail,
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  Languages,
+  Calendar,
+  FileText,
+  Download,
+} from "lucide-react";
 
 const About: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-
-  
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); 
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const UserProfile = [
     {
       name: "Tarin Agarwal",
       profession: "Game Developer",
       email: "tarinagarwal@gmail.com",
-      state: "Karnataka",
+      state: "Bangalore",
       country: "India",
-      phoneNumber: "+91 9352023583",
-      expLevel: 4,
 
+      expLevel: 4,
       hobbies: ["Reading", "Travelling", "Cooking", "Photography", "Gaming"],
       skills: [
         { name: "Game Dev", progress: 90 },
@@ -48,279 +47,229 @@ const About: React.FC = () => {
 
   const Resume = () => toast.error("Resume Not Available");
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-[#22242f]">
-        <PacmanLoader color="#c497fe" size={50} />
-      </div>
-    );
-  }
-
   return (
-    <>
-      <div className="flex w-full flex-col min-h-screen justify-center bg-[#22242f]">
-        <div className="flex flex-col sm:gap-4 sm:py-4">
-          <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 w-100">
-            <div className="rounded-md p-4">
-              <div className="grid w-100 auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-                {UserProfile.map((user, index) => (
-                  <div key={index} className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-                    <div>
-                      <Card
-                        className="sm:col-span-2 bg-[#2E2E3A] border border-[#4E4E6A]"
-                        x-chunk="dashboard-05-chunk-0"
-                      >
-                        <CardHeader className="pb-3">
-                          <CardTitle>
-                            <div className="flex justify-between">
-                              <img
-                                src="https://i.ibb.co/3mn2P2L/Whats-App-Image-2024-07-19-at-19-48-12-a0ae1728.jpg"
-                                alt="User"
-                                className="h-[8rem] w-[8rem] rounded"
-                              />
-                            </div>
-                          </CardTitle>
-                          <CardDescription className="max-w-lg text-balance leading-relaxed font-bold text-2xl text-black">
-                            <div className="grid gap-1 text-[#c497fe]">
-                              {user.name}
-                            </div>
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="p-6">
-                          <div className="grid grid-cols-1 gap-4">
-                            <ul className="grid gap-3">
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  Profession
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.profession}
-                                </span>
-                              </li>
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  Email Address
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.email}
-                                </span>
-                              </li>
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  State
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.state}
-                                </span>
-                              </li>
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  Country
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.country}
-                                </span>
-                              </li>
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  Phone Number
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.phoneNumber}
-                                </span>
-                              </li>
-                              <li className="flex items-center justify-between font-semibold">
-                                <span className="text-white sm-max1:text-sm">
-                                  Experience Level
-                                </span>
-                                <span className="text-[#c4f582] sm-max1:text-sm">
-                                  {user.expLevel} Years
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
-                        </CardContent>
-                      </Card>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="flex  w-full pt-20 flex-col min-h-screen justify-center bg-[#0a0b1e] text-white overflow-hidden"
+      >
+        <div className="fixed inset-0 z-0"></div>
+        <div className="container mx-auto px-4 py-8 relative z-10">
+          <motion.h1
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+          >
+            About Me
+          </motion.h1>
+          {UserProfile.map((user, index) => (
+            <motion.div
+              key={index}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <Card className="bg-transparent border-gray-700 overflow-hidden shadow-xl">
+                <CardHeader className="bg-gradient-to-r from-purple-900 to-indigo-900 p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full opacity-20 blur-3xl"></div>
+                      <img
+                        src="https://i.ibb.co/3mn2P2L/Whats-App-Image-2024-07-19-at-19-48-12-a0ae1728.jpg"
+                        alt="User"
+                        className="h-24 w-24 rounded-full border-4 border-white shadow-lg relative z-10"
+                      />
                     </div>
                     <div>
-                      <Card
-                        className="sm:col-span-2 z-0 bg-[#2E2E3A] border border-[#4E4E6A] h-[31rem]"
-                        x-chunk="dashboard-05-chunk-1"
-                      >
-                        <CardHeader className="rounded-t pb-3">
-                          <CardTitle className="text-2xl">
-                            <div className="flex justify-between text-[#c497fe]">
-                              Skills
-                            </div>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ScrollArea className="h-40 w-full rounded-md border p-4 mt-4 border-[#4E4E6A]">
-                            <div className="grid grid-cols-1 gap-4">
-                              <ul className="grid gap-3">
-                                {user.skills.map((skill, skillIndex) => (
-                                  <li
-                                    key={skillIndex}
-                                    className="flex items-center justify-between font-semibold"
-                                  >
-                                    <span className="text-white sm-max1:text-sm">
-                                      {skill.name}
-                                    </span>
-                                    <Progress
-                                      value={skill.progress}
-                                      aria-label={`${skill.progress}% increase`}
-                                      className="w-40 sm-max1:w-20 bg-white"
-                                    />
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </ScrollArea>
-                          <Separator className="my-4" />
-                          <div className="grid grid-cols-1 gap-4">
-                            <fieldset className="grid gap-6 rounded-lg border border-[#4E4E6A] p-4">
-                              <legend className="-ml-1 px-1 text-sm font-medium text-[#c497fe]">
-                                Hobbies
-                              </legend>
-                              <ScrollArea className="h-28 w-full rounded-md p-2">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
-                                  {user.hobbies.map((hobby, hobbyIndex) => (
-                                    <Button
-                                      key={hobbyIndex}
-                                      className="text-center border border-[#c497fe] hover:bg-transparent bg-transparent text-white"
-                                    >
-                                      {hobby}
-                                    </Button>
-                                  ))}
-                                </div>
-                              </ScrollArea>
-                            </fieldset>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                    <div>
-                      <Card
-                        className="sm:col-span-2 z-0 bg-[#2E2E3A] border border-[#4E4E6A]"
-                        x-chunk="dashboard-05-chunk-1"
-                      >
-                        <CardHeader className="rounded-t pb-3">
-                          <CardTitle className="text-2xl">
-                            <div className="flex justify-between text-[#c497fe]">
-                              General Information
-                            </div>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-6 text-sm">
-                          <div className="grid gap-3 text-white">
-                            <p>
-                              Hi, I'm a developer who loves diving into all
-                              things tech. Whether it's building web apps with
-                              React and Node.js, crafting game worlds in Unity
-                              and Unreal Engine, or experimenting with languages
-                              like GoLang and Dart, I'm always eager to learn
-                              and create. My toolkit includes everything from
-                              TypeScript and PostgreSQL to Tailwind CSS and
-                              Python, and I enjoy finding the best way to solve
-                              problems and bring ideas to life. I am all about
-                              pushing my skills further and seeing where my
-                              curiosity takes me next.
-                            </p>
-                          </div>
-                          <Separator className="my-4" />
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="grid">
-                              <div className="font-semibold text-white">
-                                Education
-                              </div>
-                              <address className="grid gap-0.5 not-italic text-muted-foreground">
-                                <div className="font-bold text-[#c4f582]">
-                                  BMS Institute of Technology and Management
-                                </div>
-                              </address>
-                            </div>
-                            <div className="grid auto-rows-max">
-                              <div className="font-semibold text-white">
-                                Work History
-                              </div>
-                              <div className="font-bold text-[#c4f582]">
-                                Remedy Games
-                              </div>
-                            </div>
-
-                            <div className="grid auto-rows-max">
-                              <div className="font-semibold text-white">
-                                Languages
-                              </div>
-                              <div className="font-bold text-[#c4f582]">
-                                English, Hindi , Spanish
-                              </div>
-                            </div>
-
-                            <div className="grid auto-rows-max">
-                              <div className="font-semibold text-white">
-                                Role
-                              </div>
-                              <div className="font-bold text-[#c4f582]">
-                                Student
-                              </div>
-                            </div>
-                            <div className="grid auto-rows-max">
-                              <div className="font-semibold text-white">
-                                Department
-                              </div>
-                              <div className="font-bold text-[#c4f582]">
-                                CSE
-                              </div>
-                            </div>
-                            <div className="grid auto-rows-max600">
-                              <div className="font-semibold text-white">
-                                Birthday
-                              </div>
-                              <div className="font-bold text-[#c4f582]">
-                                March 7, 2005
-                              </div>
-                            </div>
-                          </div>
-                          <Separator className="my-2.5" />
-                          <div className="grid gap-3">
-                            <div className="font-semibold text-white">
-                              Resume
-                            </div>
-                            <dl className="grid gap-3">
-                              <div className="flex items-center justify-between">
-                                <Button
-                                  onClick={Resume}
-                                  className="bg-[#c497fe] text-black hover:bg-[#c4f582]"
-                                >
-                                  Download Resume
-                                </Button>
-                                <ToastContainer
-                                  position="top-right"
-                                  autoClose={5000}
-                                  hideProgressBar={false}
-                                  newestOnTop={false}
-                                  closeOnClick
-                                  rtl={false}
-                                  pauseOnFocusLoss
-                                  draggable
-                                  pauseOnHover
-                                  theme="dark"
-                                />
-                              </div>
-                            </dl>
-                          </div>
-                        </CardContent>
-                      </Card>
+                      <CardTitle className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                        {user.name}
+                      </CardTitle>
+                      <CardDescription className="text-xl text-cyan-400">
+                        {user.profession}
+                      </CardDescription>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </main>
+                </CardHeader>
+                <CardContent className="p-6 space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+                      Profile
+                    </h2>
+                    <ul className="space-y-4">
+                      {[
+                        {
+                          icon: <Mail className="text-cyan-400" />,
+                          label: "Email",
+                          value: user.email,
+                        },
+                        {
+                          icon: <MapPin className="text-cyan-400" />,
+                          label: "Location",
+                          value: `${user.state}, ${user.country}`,
+                        },
+
+                        {
+                          icon: <Briefcase className="text-cyan-400" />,
+                          label: "Experience",
+                          value: `${user.expLevel} Years`,
+                        },
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center space-x-3">
+                          {item.icon}
+                          <span className="font-semibold text-purple-300">
+                            {item.label}:
+                          </span>
+                          <span className="text-gray-300">{item.value}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                  <Separator className="bg-gray-700" />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
+                    <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+                      Skills
+                    </h2>
+                    <ul className="space-y-4">
+                      {user.skills.map((skill, skillIndex) => (
+                        <li key={skillIndex} className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="font-medium text-cyan-400">
+                              {skill.name}
+                            </span>
+                            <span className="text-purple-300">
+                              {skill.progress}%
+                            </span>
+                          </div>
+                          <Progress
+                            value={skill.progress}
+                            className="h-2 bg-gray-700"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                  <Separator className="bg-gray-700" />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+                      Hobbies
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {user.hobbies.map((hobby, hobbyIndex) => (
+                        <span
+                          key={hobbyIndex}
+                          className="px-3 py-1 bg-gray-800 rounded-full text-sm text-cyan-400 border border-purple-600"
+                        >
+                          {hobby}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                  <Separator className="bg-gray-700" />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+                      General Information
+                    </h2>
+                    <p className="text-gray-300 leading-relaxed mb-4">
+                      Hi, I'm a developer who loves diving into all things tech.
+                      Whether it's building web apps with React and Node.js,
+                      crafting game worlds in Unity and Unreal Engine, or
+                      experimenting with languages like GoLang and Dart, I'm
+                      always eager to learn and create. My toolkit includes
+                      everything from TypeScript and PostgreSQL to Tailwind CSS
+                      and Python, and I enjoy finding the best way to solve
+                      problems and bring ideas to life. I am all about pushing
+                      my skills further and seeing where my curiosity takes me
+                      next.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        {
+                          icon: <GraduationCap className="text-cyan-400" />,
+                          label: "Education",
+                          value: "BMS Institute of Technology and Management",
+                        },
+                        {
+                          icon: <Briefcase className="text-cyan-400" />,
+                          label: "Work History",
+                          value: "Remedy Games",
+                        },
+                        {
+                          icon: <Languages className="text-cyan-400" />,
+                          label: "Languages",
+                          value: "English, Hindi, Spanish",
+                        },
+                        {
+                          icon: <User className="text-cyan-400" />,
+                          label: "Role",
+                          value: "Student",
+                        },
+                        {
+                          icon: <FileText className="text-cyan-400" />,
+                          label: "Department",
+                          value: "CSE",
+                        },
+                        {
+                          icon: <Calendar className="text-cyan-400" />,
+                          label: "Birthday",
+                          value: "March 7, 2005",
+                        },
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-start space-x-3">
+                          <div className="text-cyan-400">{item.icon}</div>
+                          <div>
+                            <div className="font-semibold text-purple-300">
+                              {item.label}
+                            </div>
+                            <div className="text-gray-300">{item.value}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                  <Separator className="bg-gray-700" />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <h2 className="text-2xl font-semibold mb-4 text-purple-400">
+                      Resume
+                    </h2>
+                    <Button
+                      onClick={Resume}
+                      className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white transition-all duration-300 flex items-center space-x-2 rounded-full px-6 py-3"
+                    >
+                      <Download size={18} />
+                      <span>Download Resume</span>
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </>
+        <ToastContainer position="bottom-right" theme="dark" />
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
