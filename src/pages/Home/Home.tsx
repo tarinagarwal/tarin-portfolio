@@ -71,7 +71,7 @@ const Home: React.FC = () => {
       if (success) {
         form.current.reset();
         toast.success("Message sent successfully!", {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
         });
       } else {
         toast.error("Couldn't send the message, please try again!", {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
