@@ -32,7 +32,7 @@ const MainLayout: React.FC = () => {
     <>
       <Navbar activeLink={activeLink} handleClick={handleClick} />
       <Outlet context={{ handleClick }} />
-      <Footer activeLink={activeLink} handleClick={handleClick} />
+      <Footer />
     </>
   );
 };
