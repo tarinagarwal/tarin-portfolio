@@ -39,7 +39,6 @@ const Gallery: React.FC = () => {
     setFilteredGallery(filtered);
   }, [searchTerm, gallery]);
 
- 
   return (
     <AnimatePresence>
       <motion.div

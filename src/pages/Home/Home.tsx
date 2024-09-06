@@ -130,10 +130,10 @@ const Home: React.FC = () => {
                       options={{
                         strings: [
                           "Web Development",
+                          "Game Development",
                           "SQL/PostgreSQL",
                           "Unity Engine",
                           "Unreal Engine",
-                          "Blender",
                           "C/C++",
                           "Python",
                         ],
@@ -155,11 +155,10 @@ const Home: React.FC = () => {
                   >
                     <Star className="mr-2 h-4 w-4" /> View Projects
                   </Button>
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center justify-center rounded-full bg-transparent border border-purple-600 px-8 py-3 text-sm font-medium text-purple-600 shadow-lg transition-all hover:bg-purple-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 active:bg-purple-700 duration-300 hover:scale-105"
-                  >
-                    <Component className="mr-2 h-4 w-4" /> Contact Me
+                  <a href="#contact">
+                    <Button className="inline-flex items-center justify-center rounded-full bg-transparent border border-purple-600 px-8 py-3 text-sm font-medium text-purple-600 shadow-lg transition-all hover:bg-purple-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 active:bg-purple-700 duration-300 hover:scale-105">
+                      <Component className="mr-2 h-4 w-4" /> Contact Me
+                    </Button>
                   </a>
                 </div>
                 <div className="flex flex-cols gap-4">

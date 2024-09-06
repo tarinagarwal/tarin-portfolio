@@ -105,7 +105,7 @@ export default function EnhancedBlogs() {
                             </div>
                           </Link>
                           <CardContent className="p-4">
-                            <h2 className="text-xl font-semibold mb-2 text-purple-300 line-clamp-2 hover:text-purple-400 transition-colors duration-200">
+                            <h2 className="text-xl font-semibold mb-2 text-purple-400 line-clamp-2 hover:text-purple-400 transition-colors duration-200">
                               <Link to={`/post/${post.id}`}>{post.title}</Link>
                             </h2>
                             <Separator className="my-2 bg-gray-700" />

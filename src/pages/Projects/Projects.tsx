@@ -1,39 +1,194 @@
-import React, { useEffect, useState } from "react";
-import { getProjects } from "../../apiServices/projectsApiService";
+"use client";
+
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PacmanLoader } from "react-spinners";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Code, FileText } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface Project {
-  id?: number;
+  id: number;
   src: string;
-  link: string;
+  link?: string;
   repo?: string;
   title: string;
+  description: string;
+  skills: string[];
 }
 
-const Projects: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+const projects: Project[] = [
+  {
+    id: 1,
+    src: "https://i.ibb.co/nbbtgrg/image.png",
+    link: "https://hirex-gilt.vercel.app/",
+    repo: "https://github.com/tarinagarwal/HireX",
+    title: "HireX",
+    description:
+      "A job portal application where recruiters can easily post jobs, track hiring status (open or closed), and review applications with a single click. Job seekers can browse job listings, save opportunities for later, and apply quickly with one click.",
+    skills: [
+      "React",
+      "Javascript",
+      "Frontend Development",
+      "Backend Development",
+      "Supabase",
+      "Clerk Auth",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    id: 2,
+    src: "https://i.ibb.co/fMz22BS/image.png",
+    link: "https://calamitiq.netlify.app/",
+    repo: "https://github.com/tarinagarwal/CalamitiQ.git",
+    title: "CalamitiQ",
+    description:
+      "A website that revolutionizes disaster preparedness with real-time shelter info, disaster tracking, and alerts. An interactive map shows nearby shelters with live updates, while dashboards keep you informed about ongoing emergencies. Educational resources and an AI chatbot provide essential skills and instant support.",
+    skills: [
+      "React",
+      "NodeJs",
+      "ExpressJs",
+      "Javascript",
+      "Frontend Development",
+      "Backend Development",
+      "Tailwind CSS",
+      "Gemini",
+    ],
+  },
+  {
+    id: 3,
+    src: "https://i.ibb.co/X5SYpRs/Whats-App-Image-2024-06-19-at-22-42-36-ba764734.jpg",
+    link: "https://tarinagarwal.itch.io/paint-the-walls-red",
+    title: "Paint The Walls Red",
+    description: "A strategic game created with Unity Engine.",
+    skills: ["Unity 3D"],
+  },
+  {
+    id: 4,
+    src: "https://i.ibb.co/kJ2hFRf/Whats-App-Image-2024-09-06-at-19-32-00-47692761.jpg",
+    repo: "https://github.com/tarinagarwal/ShopScribe.git",
+    title: "ShopScribe",
+    description:
+      "Keep a track of your all the shopping lists with this amazing application!",
+    skills: ["Dart", "Flutter"],
+  },
+  {
+    id: 5,
+    src: "https://i.ibb.co/mGrSNLz/Whats-App-Image-2024-09-06-at-19-44-02-3cdd03c8.jpg",
+    repo: "https://github.com/tarinagarwal/Tic-Tac-Toe.git",
+    title: "Tic Tac Toe",
+    description:
+      "A basic Tic Tac Toe game with two modes: 2-player and single-player. In single-player mode, the game features a basic AI opponent.",
+    skills: ["Dart", "Flutter"],
+  },
+];
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const data = await getProjects();
-        // @ts-ignore
-        setProjects(data);
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+function ProjectCard({ project }: { project: Project }) {
+  const [activeTab, setActiveTab] = useState<"description" | "skills">(
+    "description"
+  );
+  const contentRef = useRef<HTMLDivElement>(null);
 
-    fetchProjects();
-  }, []);
+  return (
+    <Card className="bg-gray-900 border-gray-700 flex flex-col">
+      <CardHeader className="p-0">
+        <img
+          src={project.src}
+          alt={project.title}
+          className="w-full h-48 object-cover rounded-t-lg"
+        />
+      </CardHeader>
+      <CardContent className="p-4 flex-grow flex flex-col">
+        <CardTitle className="text-xl text-purple-400 font-semibold mb-2">
+          {project.title}
+        </CardTitle>
+        <div className="flex space-x-2 mb-4">
+          <Button
+            variant={"outline"}
+            size="sm"
+            onClick={() => setActiveTab("description")}
+            className={`flex-1 ${
+              activeTab === "description"
+                ? "bg-purple-400 hover:bg-purple-400"
+                : "bg-transparent hover:bg-transparent text-gray-300 hover:text-gray-300 border-gray-700"
+            }`}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            Description
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setActiveTab("skills")}
+            className={`flex-1 ${
+              activeTab === "skills"
+                ? "bg-purple-400 hover:bg-purple-400"
+                : "bg-transparent hover:bg-transparent text-gray-300 hover:text-gray-300 border-gray-700"
+            }`}
+          >
+            <Code className="mr-2 h-4 w-4" />
+            Tech
+          </Button>
+        </div>
+        <div className="text-gray-300 mb-4 flex-grow">
+          <motion.div
+            ref={contentRef}
+            initial={false}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            {activeTab === "description" ? (
+              <p>{project.description}</p>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {project.skills.map((skill, index) => (
+                  <Badge
+                    key={index}
+                    className="bg-cyan-400 text-black hover:bg-cyan-500"
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-between p-4">
+        {project.link && (
+          <Button
+            variant="outline"
+            size="sm"
+            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:text-white hover:to-indigo-700 text-white transition-all duration-300 flex items-center space-x-2 rounded-full px-4 py-3"
+            onClick={() => window.open(project.link, "_blank")}
+          >
+            Project
+            <ExternalLink className="ml-2 h-4 w-4" />
+          </Button>
+        )}
+        {project.repo && (
+          <Button
+            variant="outline"
+            size="sm"
+            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:text-white hover:to-indigo-700 text-white transition-all duration-300 flex items-center space-x-2 rounded-full px-4 py-3"
+            onClick={() => window.open(project.repo, "_blank")}
+          >
+            GitHub
+            <Github className="ml-2 h-4 w-4" />
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
+  );
+}
 
+export default function Projects() {
   return (
     <AnimatePresence>
       <motion.div
@@ -50,7 +205,7 @@ const Projects: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
           >
-            Portfolio
+            Projects
           </motion.h1>
           <motion.p
             initial={{ y: 50, opacity: 0 }}
@@ -65,57 +220,13 @@ const Projects: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <Card className="bg-gray-900 border-gray-700 overflow-hidden shadow-xl">
+            <Card className="bg-transparent border-gray-700 overflow-hidden shadow-xl">
               <CardContent className="p-6">
-                {loading ? (
-                  <div className="flex justify-center items-center py-12">
-                    <PacmanLoader color="#8b5cf6" size={50} />
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {projects.map(({ id, src, link, repo, title }) => (
-                      <motion.div
-                        key={id}
-                        className="relative group cursor-pointer rounded-lg overflow-hidden"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <img
-                          src={src}
-                          alt={title}
-                          className="w-full h-64 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-purple-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                          <h3 className="text-lg font-semibold mb-2 text-white">
-                            {title}
-                          </h3>
-                          <div className="flex space-x-2">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="text-white bg-purple-600 hover:bg-purple-700"
-                              onClick={() => window.open(link, "_blank")}
-                            >
-                              Project
-                              <ExternalLink className="ml-2 h-4 w-4" />
-                            </Button>
-                            {repo && (
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="text-white bg-purple-600 hover:bg-purple-700"
-                                onClick={() => window.open(repo, "_blank")}
-                              >
-                                GitHub
-                                <Github className="ml-2 h-4 w-4" />
-                              </Button>
-                            )}
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -123,6 +234,4 @@ const Projects: React.FC = () => {
       </motion.div>
     </AnimatePresence>
   );
-};
-
-export default Projects;
+}

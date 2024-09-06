@@ -13,7 +13,6 @@ import { Separator } from "@/components/ui/separator";
 import { toast, ToastContainer } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  User,
   Mail,
   MapPin,
   Briefcase,
@@ -28,19 +27,19 @@ const About: React.FC = () => {
   const UserProfile = [
     {
       name: "Tarin Agarwal",
-      profession: "Game Developer",
+      profession: "Web Developer",
       email: "tarinagarwal@gmail.com",
       state: "Bangalore",
       country: "India",
 
-      expLevel: 4,
+      expLevel: 3,
       hobbies: ["Reading", "Travelling", "Cooking", "Photography", "Gaming"],
       skills: [
-        { name: "Game Dev", progress: 90 },
-        { name: "Web Dev", progress: 70 },
-        { name: "App Dev", progress: 60 },
+        { name: "Web Dev", progress: 75 },
+        { name: "Game Dev", progress: 70 },
+        { name: "App Dev", progress: 50 },
         { name: "C/C++", progress: 92 },
-        { name: "Python", progress: 80 },
+        { name: "Python", progress: 70 },
       ],
     },
   ];
@@ -207,21 +206,13 @@ const About: React.FC = () => {
                           label: "Education",
                           value: "BMS Institute of Technology and Management",
                         },
-                        {
-                          icon: <Briefcase className="text-cyan-400" />,
-                          label: "Work History",
-                          value: "Remedy Games",
-                        },
+
                         {
                           icon: <Languages className="text-cyan-400" />,
                           label: "Languages",
                           value: "English, Hindi, Spanish",
                         },
-                        {
-                          icon: <User className="text-cyan-400" />,
-                          label: "Role",
-                          value: "Student",
-                        },
+
                         {
                           icon: <FileText className="text-cyan-400" />,
                           label: "Department",
