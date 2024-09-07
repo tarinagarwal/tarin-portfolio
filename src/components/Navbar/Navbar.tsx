@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeLink, handleClick }) => {
     { path: "/about-me", label: "About Me", icon: User },
     { path: "/skills", label: "Skills", icon: Code },
     { path: "/projects", label: "Projects", icon: Rocket },
-    { path: "/gallery", label: "Gallery", icon: Image },
+    // { path: "/gallery", label: "Gallery", icon: Image },
     { path: "/blogs", label: "Blogs", icon: BookOpen },
   ];
 
@@ -124,11 +124,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeLink, handleClick }) => {
                   <NavLink key={item.path} {...item} />
                 ))}
               </nav>
-              <div className="mt-auto p-4 border-t border-gray-800">
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-                  <Star className="mr-2 h-4 w-4" /> Contact Me
-                </Button>
-              </div>
             </div>
           </SheetContent>
         </Sheet>

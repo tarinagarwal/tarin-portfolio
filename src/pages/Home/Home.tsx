@@ -19,7 +19,6 @@ import {
   Rocket,
   Component,
   Github,
-  Instagram,
   Linkedin,
   FileText,
   Code,
@@ -321,7 +320,7 @@ const Home: React.FC = () => {
                     <Star className="mr-2 h-4 w-4" /> View Projects
                   </Button>
                   <a href="#contact">
-                    <Button className="inline-flex items-center justify-center rounded-full bg-transparent border border-purple-600 px-8 py-3 text-sm font-medium text-purple-600 shadow-lg transition-all hover:bg-purple-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 active:bg-purple-700 duration-300 hover:scale-105">
+                    <Button className="inline-flex w-full items-center justify-center rounded-full bg-transparent border border-purple-600 px-8 py-3 text-sm font-medium text-purple-600 shadow-lg transition-all hover:bg-purple-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 active:bg-purple-700 duration-300 hover:scale-105">
                       <Component className="mr-2 h-4 w-4" /> Contact Me
                     </Button>
                   </a>
@@ -336,15 +335,7 @@ const Home: React.FC = () => {
                   >
                     <Github className="h-5 w-5" />
                   </Link>
-                  <Link
-                    to="https://www.instagram.com/tarinagarwal/"
-                    aria-label="Instagram"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-300"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </Link>
+
                   <Link
                     to="https://www.linkedin.com/in/tarin-agarwal-810793267/"
                     aria-label="Linkedin"
