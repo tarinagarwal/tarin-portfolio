@@ -3,7 +3,7 @@ import "./App.css";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import Gallery from "./pages/Gallery/Gallery";
+// import Gallery from "./pages/Gallery/Gallery";
 import Skills from "./pages/Skills/Skills";
 import Projects from "./pages/Projects/Projects";
 import Blogs from "./pages/Blogs/Blogs";

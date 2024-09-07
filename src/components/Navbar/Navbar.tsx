@@ -9,9 +9,9 @@ import {
   User,
   Code,
   Rocket,
-  Image,
+  // Image,
   BookOpen,
-  Star,
+  // Star,
 } from "lucide-react";
 import logo from "../../assets/logo.png";
 
