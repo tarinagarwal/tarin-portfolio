@@ -10,7 +10,7 @@ import {
   Code,
   Rocket,
   // Image,
-  BookOpen,
+  // BookOpen,
   // Star,
 } from "lucide-react";
 import logo from "../../assets/logo.png";
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeLink, handleClick }) => {
     { path: "/skills", label: "Skills", icon: Code },
     { path: "/projects", label: "Projects", icon: Rocket },
     // { path: "/gallery", label: "Gallery", icon: Image },
-    { path: "/blogs", label: "Blogs", icon: BookOpen },
+    // { path: "/blogs", label: "Blogs", icon: BookOpen },
   ];
 
   const NavLink: React.FC<NavLinkProps> = ({ path, label, icon: Icon }) => (
