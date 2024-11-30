@@ -29,17 +29,17 @@ const projects: Project[] = [
     src: "https://i.ibb.co/nbbtgrg/image.png",
     link: "https://hirex-gilt.vercel.app/",
     repo: "https://github.com/tarinagarwal/HireX",
-    title: "HireX",
+    title: "HireX (Web App)",
     description:
       "A job portal application where recruiters can easily post jobs, track hiring status (open or closed), and review applications with a single click. Job seekers can browse job listings, save opportunities for later, and apply quickly with one click.",
     skills: [
       "React",
       "Javascript",
-      "Frontend Development",
-      "Backend Development",
       "Supabase",
       "Clerk Auth",
       "Tailwind CSS",
+      "Frontend Development",
+      "Backend Development",
     ],
   },
   {
@@ -47,7 +47,7 @@ const projects: Project[] = [
     src: "https://i.ibb.co/fMz22BS/image.png",
     link: "https://calamitiq.netlify.app/",
     repo: "https://github.com/tarinagarwal/CalamitiQ.git",
-    title: "CalamitiQ",
+    title: "CalamitiQ (Web App)",
     description:
       "A website that revolutionizes disaster preparedness with real-time shelter info, disaster tracking, and alerts. An interactive map shows nearby shelters with live updates, while dashboards keep you informed about ongoing emergencies. Educational resources and an AI chatbot provide essential skills and instant support.",
     skills: [
@@ -55,17 +55,17 @@ const projects: Project[] = [
       "NodeJs",
       "ExpressJs",
       "Javascript",
-      "Frontend Development",
-      "Backend Development",
       "Tailwind CSS",
       "Gemini",
+      "Frontend Development",
+      "Backend Development",
     ],
   },
   {
     id: 3,
     src: "https://i.ibb.co/X5SYpRs/Whats-App-Image-2024-06-19-at-22-42-36-ba764734.jpg",
     link: "https://tarinagarwal.itch.io/paint-the-walls-red",
-    title: "Paint The Walls Red",
+    title: "Paint The Walls Red (Game)",
     description: "A strategic game created with Unity Engine.",
     skills: ["Unity 3D"],
   },
@@ -73,7 +73,7 @@ const projects: Project[] = [
     id: 4,
     src: "https://i.ibb.co/kJ2hFRf/Whats-App-Image-2024-09-06-at-19-32-00-47692761.jpg",
     repo: "https://github.com/tarinagarwal/ShopScribe.git",
-    title: "ShopScribe",
+    title: "ShopScribe (Mobile App)",
     description:
       "Keep a track of your all the shopping lists with this amazing application!",
     skills: ["Dart", "Flutter"],
@@ -82,10 +82,46 @@ const projects: Project[] = [
     id: 5,
     src: "https://i.ibb.co/mGrSNLz/Whats-App-Image-2024-09-06-at-19-44-02-3cdd03c8.jpg",
     repo: "https://github.com/tarinagarwal/Tic-Tac-Toe.git",
-    title: "Tic Tac Toe",
+    title: "Tic Tac Toe (Mobile App)",
     description:
       "A basic Tic Tac Toe game with two modes: 2-player and single-player. In single-player mode, the game features a basic AI opponent.",
     skills: ["Dart", "Flutter"],
+  },
+  {
+    id: 6,
+    src: "https://i.ibb.co/yPc4mwL/image.png",
+    link: "https://bio-scribe.vercel.app/",
+    repo: "https://github.com/tarinagarwal/BioScribe",
+    title: "BioScribe (Web App)",
+    description:
+      "Ever faced problems writing bios for your social media platform? We've got you! Here is our AI-powered bio enhancer. Get your bio crafted without any buzzwords.",
+    skills: [
+      "Next.js",
+      "Groq LLM",
+      "Gen AI",
+      "Tailwind CSS",
+      "Typescript",
+      "Frontend Development",
+      "Backend Development",
+    ],
+  },
+  {
+    id: 7,
+    src: "https://i.ibb.co/WWSXRHY/image.png",
+    link: "https://medify-web.vercel.app/",
+    repo: "https://github.com/tarinagarwal/medify",
+    title: "Medify (Web App)",
+    description:
+      "A patient management system with detailed registration with personal and medical information with identification proof, digital appointment booking with an option to select preferred time and date and a admin dashboard. Patients will be notified about their appointment application status",
+    skills: [
+      "Next.js",
+      "Appwrite",
+      "Twilio",
+      "Tailwind CSS",
+      "Typescript",
+      "Frontend Development",
+      "Backend Development",
+    ],
   },
 ];
 

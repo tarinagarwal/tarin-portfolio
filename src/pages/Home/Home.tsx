@@ -41,7 +41,7 @@ const projects: Project[] = [
     src: "https://i.ibb.co/nbbtgrg/image.png",
     link: "https://hirex-gilt.vercel.app/",
     repo: "https://github.com/tarinagarwal/HireX",
-    title: "HireX",
+    title: "HireX (Web App)",
     description:
       "A job portal application where recruiters can easily post jobs, track hiring status (open or closed), and review applications with a single click. Job seekers can browse job listings, save opportunities for later, and apply quickly with one click.",
     skills: [
@@ -59,7 +59,7 @@ const projects: Project[] = [
     src: "https://i.ibb.co/fMz22BS/image.png",
     link: "https://calamitiq.netlify.app/",
     repo: "https://github.com/tarinagarwal/CalamitiQ.git",
-    title: "CalamitiQ",
+    title: "CalamitiQ (Web App)",
     description:
       "A website that revolutionizes disaster preparedness with real-time shelter info, disaster tracking, and alerts. An interactive map shows nearby shelters with live updates, while dashboards keep you informed about ongoing emergencies. Educational resources and an AI chatbot provide essential skills and instant support.",
     skills: [
@@ -75,11 +75,21 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    src: "https://i.ibb.co/X5SYpRs/Whats-App-Image-2024-06-19-at-22-42-36-ba764734.jpg",
-    link: "https://tarinagarwal.itch.io/paint-the-walls-red",
-    title: "Paint The Walls Red",
-    description: "A strategic game created with Unity Engine.",
-    skills: ["Unity 3D"],
+    src: "https://i.ibb.co/WWSXRHY/image.png",
+    link: "https://medify-web.vercel.app/",
+    repo: "https://github.com/tarinagarwal/medify",
+    title: "Medify (Web App)",
+    description:
+      "A patient management system with detailed registration with personal and medical information with identification proof, digital appointment booking with an option to select preferred time and date and a admin dashboard. Patients will be notified about their appointment application status",
+    skills: [
+      "Next.js",
+      "Appwrite",
+      "Twilio",
+      "Tailwind CSS",
+      "Typescript",
+      "Frontend Development",
+      "Backend Development",
+    ],
   },
 ];
 
